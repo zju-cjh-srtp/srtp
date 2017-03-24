@@ -2,9 +2,8 @@
 // Created by Wu on 2017/3/24.
 //
 
-
-
-
+#include <stdlib.h>
+#include <stdio.h>
 #include "generate.h"
 
 /*生成一个范围在[min，max]的随机数*/
@@ -15,6 +14,10 @@ int generateRand(int max, int min){
 /*生成一个虚拟节点，即一个任务的其中一个子任务*/
 struct vNode* initVNode(){
     struct vNode* temp = (struct vNode*)malloc(sizeof(struct vNode));
+    if(temp == NULL) {
+        perror("out of memory");
+        return NULL;
+    }
     temp->startTime = 0;
     temp->duration = generateRand(RUN_MAX,RUN_MIN);
     temp->resource[CPU] = generateRand(SF_RES_MAX,SF_RES_MIN);
@@ -27,12 +30,11 @@ struct vNode* initVNode(){
 /*生成一个vList*/
 struct vList initVList(){
     int length = generateRand(SF_MAX,SF_MIN);
-
     struct vList* list = (struct vList*)malloc(sizeof(struct vList));
     list->arriveTime = generateRand(ARRIVE_MAX,ARRIVE_MIN);
     list->deadline = generateRand(DEADLINE_MAX,DEADLINE_MIN);
-    list->head = *initVNode();
-    struct vNode* now = &list->head;
+    list->head = initVNode();
+    struct vNode* now = list->head;
     for(int i = 1; i < length; i++){
         now->next = initVNode();
         now = now->next;
@@ -54,7 +56,7 @@ void printVNode(struct vNode node, int i){
 void printVList(struct vList list){
     int i = 0;
     printf("这个任务的到达时间是 %d, 截止时间为 %d\n",list.arriveTime,list.deadline);
-    struct vNode* now = &list.head;
+    struct vNode* now = list.head;
     while(now != NULL){
         printVNode(*now,++i);
         now = now->next;
@@ -62,9 +64,24 @@ void printVList(struct vList list){
 }
 
 /*释放一个vList*/
-int freeVList(){
-
+void freeVList(struct vList list){
+    struct vNode* cur = list.head;
+    while(cur != NULL){
+        printVNode(*cur,0);
+        struct vNode* temp = cur;
+        cur = cur->next;
+        freeVNode(temp);
+    }
 }
+
+/*释放一个vNode*/
+void freeVNode(struct vNode* node){
+    if(node)
+        free(node);
+}
+
+
+
 
 /*生成任务列表*/
 struct vList* initTaskList(){

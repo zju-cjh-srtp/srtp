@@ -1,12 +1,11 @@
 //
 // Created by Wu on 2017/3/24.
 //
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
+
 
 #ifndef SRTP_GENERATE_H
 #define SRTP_GENERATE_H
+
 
 /*PN资源参数*/
 #define PN_RES_MAX 50
@@ -61,7 +60,7 @@ struct vNode{
 struct vList{
     int arriveTime;
     int deadline;
-    struct vNode head;
+    struct vNode* head;
 };
 
 
@@ -89,6 +88,12 @@ void printVNode(struct vNode node, int i);
 
 /*打印整个任务*/
 void printVList(struct vList list);
+
+/*释放一个vList*/
+void freeVList(struct vList list);
+
+/*释放一个vNode*/
+void freeVNode(struct vNode* node);
 
 
 #endif //SRTP_GENERATE_H
