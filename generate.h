@@ -75,11 +75,19 @@ struct pNode{
 
 };
 
+/*生成一个范围在[min，max]的随机数*/
 int generateRand(int max, int min);
 
+/*生成一个虚拟节点，即一个任务的其中一个子任务*/
 struct vNode* initVNode();
+
+/*生成一个vList*/
 struct vList initVList();
+
+/*打印一个子任务*/
 void printVNode(struct vNode node, int i);
+
+/*打印整个任务*/
 void printVList(struct vList list);
 
 

@@ -40,6 +40,7 @@ struct vList initVList(){
     return *list;
 }
 
+/*打印一个子任务*/
 void printVNode(struct vNode node, int i){
     node.resource;
     node.duration;
@@ -49,6 +50,7 @@ void printVNode(struct vNode node, int i){
     printf("开始时间为 %d, 持续时间为 %d\n", node.startTime,node.duration);
 }
 
+/*打印整个任务*/
 void printVList(struct vList list){
     int i = 0;
     printf("这个任务的到达时间是 %d, 截止时间为 %d\n",list.arriveTime,list.deadline);
