@@ -20,8 +20,8 @@
 #define DISTANCE_MIN 1
 
 /*SFC数量参数*/
-#define SFC_MAX 1500
-#define SFC_MIN 1500
+#define SFC_MAX 15
+#define SFC_MIN 15
 
 /*SFC中SF数量参数*/
 #define SF_MAX 10
@@ -94,6 +94,10 @@ void freeVList(struct vList list);
 
 /*释放一个vNode*/
 void freeVNode(struct vNode* node);
+
+struct vList* initVListList();
+
+
 
 
 #endif //SRTP_GENERATE_H

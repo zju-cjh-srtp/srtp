@@ -32,7 +32,7 @@ struct vList initVList(){
     int length = generateRand(SF_MAX,SF_MIN);
     struct vList* list = (struct vList*)malloc(sizeof(struct vList));
     list->arriveTime = generateRand(ARRIVE_MAX,ARRIVE_MIN);
-    list->deadline = generateRand(DEADLINE_MAX,DEADLINE_MIN);
+    list->deadline = list->arriveTime + generateRand(DEADLINE_MAX,DEADLINE_MIN);
     list->head = initVNode();
     struct vNode* now = list->head;
     for(int i = 1; i < length; i++){
@@ -55,6 +55,7 @@ void printVNode(struct vNode node, int i){
 /*打印整个任务*/
 void printVList(struct vList list){
     int i = 0;
+    printf("-------------------------------------------------------------------");
     printf("这个任务的到达时间是 %d, 截止时间为 %d\n",list.arriveTime,list.deadline);
     struct vNode* now = list.head;
     while(now != NULL){
@@ -80,13 +81,14 @@ void freeVNode(struct vNode* node){
         free(node);
 }
 
-
-
-
-/*生成任务列表*/
-struct vList* initTaskList(){
-
+struct vList* initVListList(){
+    int length = generateRand(SFC_MAX,SFC_MIN);
+    struct vList* totalList = (struct vList*) malloc(sizeof(struct vList) * length);
+    for(int i = 0; i < length; i++) totalList[i] = initVList();
+    return totalList;
 }
+
+
 
 /*释放任务列表*/
 int freeTaskList(){
