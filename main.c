@@ -12,7 +12,7 @@ int main() {
 //    freeVList(list);
 
     /*任务列表，即子任务链的列表的小测试*/
-    int taskNum = generateRand(SFC_MAX,SFC_MIN);
+//    int taskNum = generateRand(SFC_MAX,SFC_MIN);
 //    struct vList* list = initVListList(taskNum);
 //    for(int i = 0; i < SFC_MIN; i++)
 //        printVList(list[i]);
@@ -28,14 +28,14 @@ int main() {
 
     /*物理机列表的小测试*/
     int pNodeNum = generateRand(PN_MAX,PN_MIN);
-    struct pNode** pNodeList = initPNodeList(pNodeNum);
-    printPNodeList(pNodeList,pNodeNum);
-    freePNodeList(pNodeList,pNodeNum);
+//    struct pNode** pNodeList = initPNodeList(pNodeNum);
+//    printPNodeList(pNodeList,pNodeNum);
+//    freePNodeList(pNodeList,pNodeNum);
 
     /*初始化物理机距离数组*/
-//    int dis[pNodeNum][pNodeNum];
-//    initDis(pNodeNum,dis);
-//    for(int i = 0; i < pNodeNum; i++)
-//        for(int j = 0; j < pNodeNum; j++)
-//            printf("物理机节点 %d 和 %d 之间的距离是 %d\n", i,j,dis[i][j]);
+    int dis[pNodeNum][pNodeNum];
+    initDis(pNodeNum,dis);
+    for(int i = 0; i < pNodeNum; i++)
+        for(int j = 0; j < pNodeNum; j++)
+            printf("物理机节点 %d 和 %d 之间的距离是 %d\n", i,j,dis[i][j]);
 }

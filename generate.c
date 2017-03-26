@@ -136,7 +136,7 @@ struct pNode** initPNodeList(int pNodeNum){
 /*打印一个物理机列表*/
 void printPNodeList(struct pNode** list, int pNodeNum){
     for(int i = 0; i < pNodeNum; i++){
-        printPNode(*list[1],i);
+        printPNode(*list[i],i);
     }
 }
 
