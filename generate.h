@@ -64,14 +64,10 @@ struct vList{
 };
 
 
-
-
 /*物理机*/
 struct pNode{
     int totalResource[3];//三种类型资源共有多少
     int load[3];//三种类型资源已经被占用了多少
-//    struct vNode* next;//下一个子任务
-
 };
 
 /*生成一个范围在[min，max]的随机数*/
@@ -95,9 +91,31 @@ void freeVList(struct vList list);
 /*释放一个vNode*/
 void freeVNode(struct vNode* node);
 
-struct vList* initVListList();
+/*创建任务的列表，每一个任务是一条子任务链*/
+struct vList* initVListList(int taskNum);
 
+/*释放任务列表*/
+void freeTaskList(int taskNum, struct vList* list);
 
+/*生成一个物理机节点*/
+struct pNode* initPNode();
 
+/*打印一个物理机*/
+void printPNode(struct pNode node, int i);
+
+/*释放一个物理机节点*/
+void freePNode(struct pNode* node);
+
+/*创建一个物理机列表*/
+struct pNode** initPNodeList(int pNodeNum);
+
+/*打印一个物理机列表*/
+void printPNodeList(struct pNode** list, int pNodeNum);
+
+/*释放所有物理机，即物理机列表*/
+void freePNodeList(struct pNode** list, int pNodeNum);
+
+/*初始化所有物理机之间的距离*/
+void initDis(int pNodeNum,int dis[][pNodeNum]);
 
 #endif //SRTP_GENERATE_H

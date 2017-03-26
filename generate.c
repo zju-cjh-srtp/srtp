@@ -44,9 +44,6 @@ struct vList initVList(){
 
 /*打印一个子任务*/
 void printVNode(struct vNode node, int i){
-    node.resource;
-    node.duration;
-    node.startTime;
     printf("这是第 %d 个子任务\n",i);
     printf("其资源占有分别是 %d,%d,%d \n",node.resource[0],node.resource[1],node.resource[2]);
     printf("开始时间为 %d, 持续时间为 %d\n", node.startTime,node.duration);
@@ -55,7 +52,7 @@ void printVNode(struct vNode node, int i){
 /*打印整个任务*/
 void printVList(struct vList list){
     int i = 0;
-    printf("-------------------------------------------------------------------");
+    printf("-------------------------------------------------------------------\n");
     printf("这个任务的到达时间是 %d, 截止时间为 %d\n",list.arriveTime,list.deadline);
     struct vNode* now = list.head;
     while(now != NULL){
@@ -68,7 +65,7 @@ void printVList(struct vList list){
 void freeVList(struct vList list){
     struct vNode* cur = list.head;
     while(cur != NULL){
-        printVNode(*cur,0);
+//        printVNode(*cur,0);
         struct vNode* temp = cur;
         cur = cur->next;
         freeVNode(temp);
@@ -81,22 +78,79 @@ void freeVNode(struct vNode* node){
         free(node);
 }
 
-struct vList* initVListList(){
-    int length = generateRand(SFC_MAX,SFC_MIN);
-    struct vList* totalList = (struct vList*) malloc(sizeof(struct vList) * length);
-    for(int i = 0; i < length; i++) totalList[i] = initVList();
+/*创建任务的列表，每一个任务是一条子任务链*/
+struct vList* initVListList(int taskNum){
+    struct vList* totalList = (struct vList*) malloc(sizeof(struct vList) * taskNum);
+    for(int i = 0; i < taskNum; i++) totalList[i] = initVList();
     return totalList;
 }
 
 
 
 /*释放任务列表*/
-int freeTaskList(){
-
+void freeTaskList(int taskNum, struct vList* list){
+    for(int i = 0; i < taskNum; i++){
+        freeVList(list[i]);
+    }
+    free(list);
 }
 
 /*生成一个物理机节点*/
-struct pNode initPNode(){
-
+struct pNode* initPNode(){
+    struct pNode* temp = (struct pNode*)malloc(sizeof(struct pNode));
+    if(temp == NULL) {
+        perror("out of memory");
+        return NULL;
+    }
+    temp->totalResource[CPU] = generateRand(PN_RES_MAX,PN_RES_MIN);
+    temp->totalResource[MEMORY] = generateRand(PN_RES_MAX,PN_RES_MIN);
+    temp->totalResource[DISK] = generateRand(PN_RES_MAX,PN_RES_MIN);
+    temp->load[CPU] = 0;
+    temp->load[MEMORY] = 0;
+    temp->load[DISK] = 0;
+    return temp;
 }
 
+/*打印一个物理机*/
+void printPNode(struct pNode node, int i){
+
+    printf("这是第 %d 个物理机\n",i);
+    printf("其资源总量分别是 %d,%d,%d \n",node.totalResource[0],node.totalResource[1],node.totalResource[2]);
+    printf("其资源被用量分别是 %d,%d,%d \n",node.load[0],node.load[1],node.load[2]);
+}
+
+/*释放一个物理机节点*/
+void freePNode(struct pNode* node){
+    if(node)
+        free(node);
+}
+
+
+/*创建一个物理机列表*/
+struct pNode** initPNodeList(int pNodeNum){
+    struct pNode** pNodeList = (struct pNode**) malloc(sizeof(struct pNode*) * pNodeNum);
+    for(int i = 0; i < pNodeNum; i++) pNodeList[i] = initPNode();
+    return pNodeList;
+}
+
+/*打印一个物理机列表*/
+void printPNodeList(struct pNode** list, int pNodeNum){
+    for(int i = 0; i < pNodeNum; i++){
+        printPNode(*list[1],i);
+    }
+}
+
+/*释放所有物理机，即物理机列表*/
+void freePNodeList(struct pNode** list, int pNodeNum){
+    for(int i = 0; i < pNodeNum; i++){
+        freePNode(list[i]);
+    }
+    free(list);
+}
+
+/*初始化所有物理机之间的距离*/
+void initDis(int pNodeNum , int dis[][pNodeNum]){
+    for(int i = 0; i < pNodeNum; i++)
+        for(int j = 0; j < pNodeNum; j++)
+            dis[i][j] = generateRand(DISTANCE_MAX,DISTANCE_MIN);
+}
