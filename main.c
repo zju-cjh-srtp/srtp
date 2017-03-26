@@ -28,9 +28,9 @@ int main() {
 
     /*物理机列表的小测试*/
     int pNodeNum = generateRand(PN_MAX,PN_MIN);
-//    struct pNode** pNodeList = initPNodeList(pNodeNum);
-//    printPNodeList(pNodeList,pNodeNum);
-//    freePNodeList(pNodeList,pNodeNum);
+    struct pNode** pNodeList = initPNodeList(pNodeNum);
+    printPNodeList(pNodeList,pNodeNum);
+    freePNodeList(pNodeList,pNodeNum);
 
     /*初始化物理机距离数组*/
     int dis[pNodeNum][pNodeNum];
