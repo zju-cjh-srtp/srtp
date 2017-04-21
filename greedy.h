@@ -1,5 +1,9 @@
-#ifndef _TEST_H_
-#define _TEST_H_
+//
+// Created by IsaccLee on 4/21/17.
+//
+
+#ifndef SRTP_GREEDY_H
+#define SRTP_GREEDY_H
 
 #define LOCALERROR -1
 #define TIME_STEP 1
@@ -7,8 +11,7 @@
 
 //void PerformTest(int taskNum, struct vList* list, int dis[][PN_MAX]);
 void sortByArriveTime(struct vList*  list, int taskNum);
-int * UsePNodeInOrder(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList);
 int * UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList);
-void reset(struct vList* list,int taskNum,struct pNode** pNodeList);
 
-#endif // !_TEST_H_
+
+#endif //SRTP_GREEDY_H
