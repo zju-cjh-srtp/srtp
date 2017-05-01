@@ -8,7 +8,6 @@
 //void PerformTest(int taskNum, struct vList* list, int dis[][PN_MAX]);
 void sortByArriveTime(struct vList*  list, int taskNum);
 int * UsePNodeInOrder(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList);
-int * UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList);
 void reset(struct vList* list,int taskNum,struct pNode** pNodeList);
 
 #endif // !_TEST_H_

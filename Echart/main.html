@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="echarts.js"></script>
+    <script src="jquery-3.2.1.js"></script>
+    <title>Presentation</title>
+</head>
+<body>
+    <div id="Resource" style="width: 1000px;height:600px;"></div>
+    <script type="text/javascript">
+
+        var resourceChart = echarts.init(document.getElementById('Resource'));
+
+        $.get('resourece.json').done(function (data){
+            resourceChart.setOption( {
+                title:{
+                    text:'资源分配情况'
+                },
+                tooltip:{},
+                legend: {
+                    data:['分配情况']
+                },
+                xAxis: {
+                    data: ["物理机1","物理机2","物理机3","物理机4","物理机5"]
+                },
+                yAxis: {},
+                series: [{
+                    name: '内存',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10]
+                },{
+                    name: 'CPU',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10]
+                },{
+                    name: '硬盘',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10]
+                }]
+            });
+        })
+
+    </script>
+    <div id="Malloc" style="width: 1000px;height:600px;"></div>
+    <script type="text/javascript">
+        var mallocChart = echarts.init(document.getElementById('Malloc'));
+        $.get('malloc.json').done(function(data){
+            mallocChart.setOption({
+                title:{
+                    text:'任务分配情况'
+                },
+                tooltip:{},
+                legend: {
+                    data:['分配情况']
+                },
+                xAxis: {
+                    data: ["1","2","3","4","5","6","7","8","9","10"]
+                },
+                yAxis: {
+                    data:["物理机1","物理机2","物理机3","物理机4","物理机5"]
+                },
+                dataZoom:[{
+                    type: 'slider',
+                    start: 0,
+                    end: 100
+                }],
+                series: [
+                    {
+                        name:'1',
+                        type: 'scatter',
+                        symbolSize:function(val){
+                            return (val[2]+val[3]+val[4])/3
+                        },
+                        data:[["1","物理机1","5","2","3"],["3","物理机2","2","3","4"]]
+                    },
+                    {
+                        name:'2',
+                        type: 'scatter',
+                        symbolSize:function(val){
+                            return (val[2]+val[3]+val[4])/3
+                        },
+                        data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]
+                    },
+                    {
+                        name:'3',
+                        type: 'scatter',
+                        symbolSize:function(val){
+                            return (val[2]+val[3]+val[4])/3
+                        },
+                        data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]
+                    },
+                    {
+                        name:'4',
+                        type: 'scatter',
+                        symbolSize:function(val){
+                            return (val[2]+val[3]+val[4])/3
+                        },
+                        data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]
+                    },
+                    {
+                        name:'5',
+                        type: 'scatter',
+                        symbolSize:function(val){
+                            return (val[2]+val[3]+val[4])/3
+                        },
+                        data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]
+                    }
+
+                ]
+            });
+        });
+
+    </script>
+</body>
+</html>

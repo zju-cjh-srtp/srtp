@@ -7,10 +7,8 @@
 
 #define LOCALERROR -1
 #define TIME_STEP 1
-#include "generate.h"
+#include "firstFit.h"
 
-//void PerformTest(int taskNum, struct vList* list, int dis[][PN_MAX]);
-void sortByArriveTime(struct vList*  list, int taskNum);
 int * UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList);
 
 

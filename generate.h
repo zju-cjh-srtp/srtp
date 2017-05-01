@@ -6,8 +6,8 @@
 
 
 /*PN资源参数*/
-#define PN_RES_MAX 50
-#define PN_RES_MIN 25
+#define PN_RES_MAX 150
+#define PN_RES_MIN 100
 
 /*PN数量参数*/
 #define PN_MAX 30
@@ -18,8 +18,8 @@
 #define DISTANCE_MIN 1
 
 /*SFC数量参数*/
-#define SFC_MAX 15
-#define SFC_MIN 15
+#define SFC_MAX 100
+#define SFC_MIN 100
 
 /*SFC中SF数量参数*/
 #define SF_MAX 10

@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
-#include "generate.h"
 #include <stdio.h>
-#include "test.h"
 #include "greedy.h"
 int main() {
     srand(time(NULL));
