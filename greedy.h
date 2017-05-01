@@ -9,7 +9,7 @@
 #define TIME_STEP 1
 #include "firstFit.h"
 
-int * UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList);
+int* UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList,FILE * fp);
 
 
 #endif //SRTP_GREEDY_H

@@ -3,7 +3,7 @@
 //
 
 #include <stdio.h>
-
+#include "firstFit.h"
 int findPnode(struct pNode** pNodeList, int *need,int lastId,int pNodeNum,int dis[][PN_MAX]){//寻找能成功放入的最近的节点,如果上一个为空,则是第一个放的进的节点,-1表示没有放的下的
     int preId = -1,minDis=DISTANCE_MAX;
     for(int i = 0; i < pNodeNum ; i++){
@@ -24,7 +24,7 @@ int findPnode(struct pNode** pNodeList, int *need,int lastId,int pNodeNum,int di
 }
 
 
-int* UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList)  //对每一个子任务，调用寻找函数,输出结果
+int* UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList,FILE *fp)  //对每一个子任务，调用寻找函数,输出结果
 {
     int tmp_time = 0;
     int* finish_time = (int *)malloc(sizeof(int) * taskNum);
@@ -39,7 +39,7 @@ int* UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][P
                     int id;
                     if(prev_subTask)id = findPnode(pNodeList, tmp_subTask->resource,prev_subTask->hostPNodeID,pNodeNum,dis);
                     else id = findPnode(pNodeList, tmp_subTask->resource,-1,pNodeNum,dis);
-                    if(id >= 0) {
+                    if(id >= 0) {//放的下就输出
                         putTaskIntoPnode(pNodeList[id], tmp_subTask->resource);
 
                         tmp_subTask->hostPNodeID = id;

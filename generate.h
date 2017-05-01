@@ -6,40 +6,40 @@
 
 
 /*PN资源参数*/
-#define PN_RES_MAX 150
-#define PN_RES_MIN 100
+#define PN_RES_MAX 30
+#define PN_RES_MIN 10
 
 /*PN数量参数*/
-#define PN_MAX 30
-#define PN_MIN 30
+#define PN_MAX 5
+#define PN_MIN 5
 
 /*PN距离参数*/
 #define DISTANCE_MAX 20
 #define DISTANCE_MIN 1
 
 /*SFC数量参数*/
-#define SFC_MAX 100
-#define SFC_MIN 100
+#define SFC_MAX 5
+#define SFC_MIN 5
 
 /*SFC中SF数量参数*/
-#define SF_MAX 10
-#define SF_MIN 5
+#define SF_MAX 3
+#define SF_MIN 1
 
 /*SFC到达时间参数*/
-#define ARRIVE_MAX 1000
+#define ARRIVE_MAX 8
 #define ARRIVE_MIN 0
 
 /*SFC截止时间参数*/
-#define DEADLINE_MAX 1000
+#define DEADLINE_MAX 16
 #define DEADLINE_MIN 0
 
 /*SF运行时间参数*/
-#define RUN_MAX 30
-#define RUN_MIN 15
+#define RUN_MAX 4
+#define RUN_MIN 1
 
 /*SF资源参数*/
-#define SF_RES_MAX 10
-#define SF_RES_MIN 7
+#define SF_RES_MAX 5
+#define SF_RES_MIN 1
 
 /*资源种类*/
 #define CPU 0

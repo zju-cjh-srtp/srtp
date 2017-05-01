@@ -4,6 +4,15 @@
 #include "greedy.h"
 int main() {
     srand(time(NULL));
+    FILE *fpf,*fpg;
+    if((fpf = fopen("fpf.csv","w+"))==NULL ) {
+        printf("fail to creat fpf");
+        exit(1);
+    };
+    if((fpg = fopen("fpg.csv","w+"))==NULL ) {
+        printf("fail to creat fpg");
+        exit(1);
+    };
 
     /*一个任务，即一条子任务链的小测试*/
 //    struct vList list = initVList();
@@ -44,9 +53,11 @@ int main() {
     //for (int i = 0; i < pNodeNum; i++)
     //  for (int j = 0; j < pNodeNum; j++);
     //    printf("物理机节点 %d 和 %d 之间的距离是 %d\n", i,j,dis[i][j]);
+    int totaltime = 30;
+    fprintf(fpf,"%d,%d,%d\n",pNodeNum,totaltime,taskNum);
 
 
-    int *finish_time = UsePNodeInOrder(taskNum, pNodeNum, list, dis, pNodeList);
+    int *finish_time = UsePNodeInOrder(taskNum, pNodeNum, list, dis, pNodeList,fpf);
     for (int i = 0;i < taskNum;i++) {
         if (list[i].taskState == REJECTED) {
             printf("任务%d分配失败\n", i);
@@ -55,8 +66,9 @@ int main() {
             printf("任务%d分配成功，完成时间为%d\n", i, finish_time[i]);
         }
     }
+
     reset(list,taskNum,pNodeList);
-    int *finish_time2 = UsePNodeInGreedy(taskNum, pNodeNum, list, dis, pNodeList);
+    int *finish_time2 = UsePNodeInGreedy(taskNum, pNodeNum, list, dis, pNodeList,fpg);
     for (int i = 0;i < taskNum;i++) {
         if (list[i].taskState == REJECTED) {
             printf("任务%d分配失败\n", i);
@@ -69,6 +81,7 @@ int main() {
 
     freeTaskList(taskNum, list);
     freePNodeList(pNodeList, pNodeNum);
-
+    fclose(fpf);
+    fclose(fpg);
 //    system("pause"); //for win only
 }

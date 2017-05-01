@@ -92,7 +92,7 @@ int putTaskIntoPnode(struct pNode* PC, int *need)  //×ÓÈÎÎñ·ÅÈëÎïÀí»ú¡£Èç¹ûÄÜ³É¹
 
 
 
-int* UsePNodeInOrder(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList)  //¶ÔÃ¿Ò»¸ö×ÓÈÎÎñ£¬°´ÎïÀí»ú±àºÅË³ĞòÕÒµ½µÚÒ»¸ö×°µÃÏÂµÄÎïÀí»ú£¬²¢·ÅÈë¡£·µ»ØÃ¿¸öÈÎÎñµÄÍê³ÉÊ±¼ä
+int* UsePNodeInOrder(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList,FILE *fp)  //¶ÔÃ¿Ò»¸ö×ÓÈÎÎñ£¬°´ÎïÀí»ú±àºÅË³ĞòÕÒµ½µÚÒ»¸ö×°µÃÏÂµÄÎïÀí»ú£¬²¢·ÅÈë¡£·µ»ØÃ¿¸öÈÎÎñµÄÍê³ÉÊ±¼ä
 {
 	int tmp_time = 0;
 	int* finish_time = (int *)malloc(sizeof(int) * taskNum);
