@@ -24,10 +24,12 @@ int findPnode(struct pNode** pNodeList, int *need,int lastId,int pNodeNum,int di
 }
 
 
-int* UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList,FILE *fp)  //对每一个子任务，调用寻找函数,输出结果
+int* UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList,FILE *fr)  //对每一个子任务，调用寻找函数,输出结果
 {
     int tmp_time = 0;
     int* finish_time = (int *)malloc(sizeof(int) * taskNum);
+    fprintf(fr,"TIME,TaskNumber,PcNumber,CPU,MEMORY,DISK\n");
+
     while (hasWaiting(list, taskNum, tmp_time, pNodeList) == 1) {//如果还有待分配任务
         for (int i = 0; i < taskNum;i++)
         {
@@ -59,6 +61,7 @@ int* UsePNodeInGreedy(int taskNum, int pNodeNum, struct vList* list, int dis[][P
                         unAllocate(list[i].head, tmp_subTask, pNodeList);
                         break;
                     }
+                    fprintf(fr,"%d,%d,%d,%d,%d,%d\n",tmp_subTask->startTime,i+1,id+1,tmp_subTask->resource[CPU],tmp_subTask->resource[MEMORY],tmp_subTask->resource[DISK]);//第tmp秒,第i个任务分配第j个物理机,对应的cpu,memory,task
                     prev_subTask = tmp_subTask;
                     tmp_subTask = tmp_subTask->next;
                 }

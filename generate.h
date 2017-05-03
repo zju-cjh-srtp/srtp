@@ -18,11 +18,11 @@
 #define DISTANCE_MIN 1
 
 /*SFC数量参数*/
-#define SFC_MAX 5
+#define SFC_MAX 7
 #define SFC_MIN 5
 
 /*SFC中SF数量参数*/
-#define SF_MAX 3
+#define SF_MAX 6
 #define SF_MIN 1
 
 /*SFC到达时间参数*/
@@ -30,11 +30,11 @@
 #define ARRIVE_MIN 0
 
 /*SFC截止时间参数*/
-#define DEADLINE_MAX 16
+#define DEADLINE_MAX 30
 #define DEADLINE_MIN 0
 
 /*SF运行时间参数*/
-#define RUN_MAX 4
+#define RUN_MAX 5
 #define RUN_MIN 1
 
 /*SF资源参数*/
@@ -70,6 +70,7 @@ struct vList{
     int arriveTime;
     int deadline;
     int taskState;  //任务链状态
+    int length;
     struct vNode* head;
 };
 

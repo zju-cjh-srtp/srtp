@@ -35,6 +35,7 @@ struct vList initVList(){
     list->deadline = list->arriveTime + generateRand(DEADLINE_MAX,DEADLINE_MIN);
     list->taskState = WAITING;
     list->head = initVNode();
+    list->length = length;
     struct vNode* now = list->head;
     for(int i = 1; i < length; i++){
         now->next = initVNode();

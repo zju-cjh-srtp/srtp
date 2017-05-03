@@ -92,10 +92,12 @@ int putTaskIntoPnode(struct pNode* PC, int *need)  //×ÓÈÎÎñ·ÅÈëÎïÀí»ú¡£Èç¹ûÄÜ³É¹
 
 
 
-int* UsePNodeInOrder(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList,FILE *fp)  //¶ÔÃ¿Ò»¸ö×ÓÈÎÎñ£¬°´ÎïÀí»ú±àºÅË³ĞòÕÒµ½µÚÒ»¸ö×°µÃÏÂµÄÎïÀí»ú£¬²¢·ÅÈë¡£·µ»ØÃ¿¸öÈÎÎñµÄÍê³ÉÊ±¼ä
+int* UsePNodeInOrder(int taskNum, int pNodeNum, struct vList* list, int dis[][PN_MAX], struct pNode** pNodeList,FILE *fr)  //¶ÔÃ¿Ò»¸ö×ÓÈÎÎñ£¬°´ÎïÀí»ú±àºÅË³ĞòÕÒµ½µÚÒ»¸ö×°µÃÏÂµÄÎïÀí»ú£¬²¢·ÅÈë¡£·µ»ØÃ¿¸öÈÎÎñµÄÍê³ÉÊ±¼ä
 {
 	int tmp_time = 0;
 	int* finish_time = (int *)malloc(sizeof(int) * taskNum);
+	fprintf(fr,"TIME,TaskNumber,PcNumber,CPU,MEMORY,DISK\n");
+
 	while (hasWaiting(list, taskNum, tmp_time, pNodeList) == 1) {//Èç¹û»¹ÓĞ´ı·ÖÅäÈÎÎñ
 		for (int i = 0; i < taskNum;i++)
 		{
@@ -122,6 +124,7 @@ int* UsePNodeInOrder(int taskNum, int pNodeNum, struct vList* list, int dis[][PN
 						unAllocate(list[i].head, tmp_subTask, pNodeList);
 						break;
 					}
+					fprintf(fr,"%d,%d,%d,%d,%d,%d\n",tmp_subTask->startTime,i+1,j+1,tmp_subTask->resource[CPU],tmp_subTask->resource[MEMORY],tmp_subTask->resource[DISK]);//µÚtmpÃë,µÚi¸öÈÎÎñ·ÖÅäµÚj¸öÎïÀí»ú,¶ÔÓ¦µÄcpu,memory,task
 					prev_subTask = tmp_subTask;
 					tmp_subTask = tmp_subTask->next;
 				}
