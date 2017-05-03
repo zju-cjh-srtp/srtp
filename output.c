@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "generate.h"
-void PrintPCState(struct vList *list, struct pNode** pNodeList, FILE *fp,int Time,int pNum,int tNum){
+void PrintPCState(struct vList *list, struct pNode** pNodeList, FILE *fp,int Time,int pNum,int tNum){//输出物理机状态
 //    fprintf(fp,"TIME,PcNumber,CPU,MEMORY,DISK\n");
-    int * resource = (int *)calloc(Time*pNum*3, sizeof(int));
+    int * resource = (int *)calloc(Time*pNum*3, sizeof(int));//3列的数组->一维存储
     for(int i = 0; i < tNum; i++){// task
 
         if(list[i].taskState != REJECTED ){//only finished task will matter
@@ -26,8 +26,8 @@ void PrintPCState(struct vList *list, struct pNode** pNodeList, FILE *fp,int Tim
         }
     }
 
-    for(int i = 0 ; i <Time;i++){
-        printf("%d",Time);
+    for(int i = 0 ; i <Time;i++){//每次输出当前秒数下,五个机子的状态
+//        printf("%d",Time);
         int t = i * pNum*3;
         fprintf(fp,"%d,%d,%d,%d,%d\n",resource[t+CPU],resource[t+3+CPU],resource[t+6+CPU],resource[t+9+CPU],resource[t+12+CPU]);
         fprintf(fp,"%d,%d,%d,%d,%d\n",resource[t+MEMORY],resource[t+3+MEMORY],resource[t+6+MEMORY],resource[t+9+MEMORY],resource[t+12+MEMORY]);

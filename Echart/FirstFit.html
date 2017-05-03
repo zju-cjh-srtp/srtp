@@ -8,10 +8,7 @@
     <title>Presentation</title>
 </head>
 <body>
-    <script type="text/javascript">
-        var a={}
-        var phy =
-    </script>
+
     <div id="Resource" style="width: 1000px;height:600px;"></div>
     <script type="text/javascript">
         var resourceChart = echarts.init(document.getElementById('Resource'));
@@ -143,74 +140,75 @@
                 })
 
     </script>
-    <div id="Malloc" style="width: 1000px;height:600px;"></div>
-    <script type="text/javascript">
-        var mallocChart = echarts.init(document.getElementById('Malloc'));
 
-            mallocChart.setOption({
-                title:{
-                    text:'任务分配情况'
-                },
-                tooltip:{},
-                legend: {
-                    data:['分配情况']
-                },
-                xAxis: {
-                    data: ["1","2","3","4","5","6","7","8","9","10"]
-                },
-                yAxis: {
-                    data:["物理机1","物理机2","物理机3","物理机4","物理机5"]
-                },
-                dataZoom:[{
-                    type: 'slider',
-                    start: 0,
-                    end: 100
-                }],
-                series: [
-                    {
-                        name:'1',
-                        type: 'scatter',
-                        symbolSize:function(val){
-                            return (val[2]+val[3]+val[4])/3
-                        },
-                        data:[["1","物理机1","5","2","3"],["3","物理机2","2","3","4"]]
-                    },
-                    {
-                        name:'2',
-                        type: 'scatter',
-                        symbolSize:function(val){
-                            return (val[2]+val[3]+val[4])/3
-                        },
-                        data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]
-                    },
-                    {
-                        name:'3',
-                        type: 'scatter',
-                        symbolSize:function(val){
-                            return (val[2]+val[3]+val[4])/3
-                        },
-                        data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]
-                    },
-                    {
-                        name:'4',
-                        type: 'scatter',
-                        symbolSize:function(val){
-                            return (val[2]+val[3]+val[4])/3
-                        },
-                        data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]
-                    },
-                    {
-                        name:'5',
-                        type: 'scatter',
-                        symbolSize:function(val){
-                            return (val[2]+val[3]+val[4])/3
-                        },
-                        data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]
-                    }
+    <!--<div id="Malloc" style="width: 1000px;height:600px;"></div>-->
+    <!--<script type="text/javascript">-->
+        <!--var mallocChart = echarts.init(document.getElementById('Malloc'));-->
 
-                ]
-            });
+            <!--mallocChart.setOption({-->
+                <!--title:{-->
+                    <!--text:'任务分配情况'-->
+                <!--},-->
+                <!--tooltip:{},-->
+                <!--legend: {-->
+                    <!--data:['分配情况']-->
+                <!--},-->
+                <!--xAxis: {-->
+                    <!--data: ["1","2","3","4","5","6","7","8","9","10"]-->
+                <!--},-->
+                <!--yAxis: {-->
+                    <!--data:["物理机1","物理机2","物理机3","物理机4","物理机5"]-->
+                <!--},-->
+                <!--dataZoom:[{-->
+                    <!--type: 'slider',-->
+                    <!--start: 0,-->
+                    <!--end: 100-->
+                <!--}],-->
+                <!--series: [-->
+                    <!--{-->
+                        <!--name:'1',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","5","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--},-->
+                    <!--{-->
+                        <!--name:'2',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--},-->
+                    <!--{-->
+                        <!--name:'3',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--},-->
+                    <!--{-->
+                        <!--name:'4',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--},-->
+                    <!--{-->
+                        <!--name:'5',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--}-->
 
-    </script>
+                <!--]-->
+            <!--});-->
+
+    <!--</script>-->
 </body>
 </html>

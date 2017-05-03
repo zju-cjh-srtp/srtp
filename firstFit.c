@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "firstFit.h"
 
-
 //void PerformTest(int taskNum, struct vList* list, int dis[][PN_MAX])
 //{
 //	for (int i = 0;i < taskNum;i++)
@@ -16,6 +15,7 @@
 //		}
 //	}
 //}
+
 void unAllocate(struct vNode* from, struct vNode* to, struct pNode** pNodeList)  //取消分配，即当发现一个任务分配失败后，取消已经分配的子节点占用的资源（从from指向的节点到to指向的节点，to指向的节点表示最后一个分配到物理机的子任务节点的下一个节点）。
 {
 	while (from != to)
@@ -26,9 +26,9 @@ void unAllocate(struct vNode* from, struct vNode* to, struct pNode** pNodeList) 
 		from = from->next;
 	}
 }
-void reset(struct vList* list,int taskNum,struct pNode** pNodeList){
+void reset(struct vList* list,int taskNum,struct pNode** pNodeList){//对于所有成功的节点,reset,返回值
 	for (int i = 0;i < taskNum;i++) {
-		if(list[i].taskState == SUCCEED){unAllocate(list[i].head, NULL, pNodeList);}
+		if(list[i].taskState != REJECTED){unAllocate(list[i].head, NULL, pNodeList);}
 		list[i].taskState = WAITING;
 	}
 }
@@ -124,6 +124,7 @@ int* UsePNodeInOrder(int taskNum, int pNodeNum, struct vList* list, int dis[][PN
 						unAllocate(list[i].head, tmp_subTask, pNodeList);
 						break;
 					}
+
 					fprintf(fr,"%d,%d,%d,%d,%d,%d\n",tmp_subTask->startTime,i+1,j+1,tmp_subTask->resource[CPU],tmp_subTask->resource[MEMORY],tmp_subTask->resource[DISK]);//第tmp秒,第i个任务分配第j个物理机,对应的cpu,memory,task
 					prev_subTask = tmp_subTask;
 					tmp_subTask = tmp_subTask->next;

@@ -2,11 +2,15 @@
 #include <time.h>
 #include <stdio.h>
 #include "greedy.h"
-#include "state.h"
+#include "output.h"
+#include "generate.h"
+
 int main() {
-    srand(time(NULL));
+    srand(time(NULL));//随机数种子
+
+
     FILE *frf,*frg,*ftask,*fpf,*fpg;
-    //fr 任务分配 f - firstfit  g - greedy
+    //fr 任务分配到哪些机子上 f - firstfit  g - greedy
     if((frf = fopen("frf.csv","w+"))==NULL ) {
         printf("fail to create frf");
         exit(1);
@@ -16,7 +20,7 @@ int main() {
         exit(1);
     };
 
-    //fp 物理机状态
+    //fp 物理机每秒的状态
     if((fpf = fopen("fpf.csv","w+"))==NULL ) {
         printf("fail to create fpf");
         exit(1);
@@ -25,11 +29,12 @@ int main() {
         printf("fail to create fpg");
         exit(1);
     };
-    //ftask 任务状态
+    //ftask 任务详情,
     if((ftask = fopen("ftask.csv","w+")) == NULL){
         printf("fail to create task");
         exit(1);
     }
+
     /*一个任务，即一条子任务链的小测试*/
 //    struct vList list = initVList();
 //    printVList(list);
@@ -47,11 +52,12 @@ int main() {
     for (int i = 0; i < taskNum; i++) {
         struct vNode* now = list[i].head;
         for(int j = 0; j < list[i].length;j++){
-            fprintf(ftask,"%d,%d,%d,%d,%d,%d,%d,%d\n",i+1,list[i].length,j+1,now->resource[0],now->resource[1],now->resource[2],now->startTime,now->duration);//第i个任务的j个子任务
+            fprintf(ftask,"%d,%d,%d,%d,%d,%d,%d,%d\n",i+1,list[i].length,j+1,now->resource[0],now->resource[1],now->resource[2],now->startTime,now->duration);//第i个任务的j个子任务,三个资源占有率,开始时间和持续时间
             now = now->next;
         }
-//        printVList(list[i]);
+        printVList(list[i]);
     }
+
 //    for (int i = 0; i < taskNum; i++) {
 //        printf("这是第%d个任务\n", i);
 //        printVList(list[i]);
@@ -79,6 +85,8 @@ int main() {
     //for (int i = 0; i < pNodeNum; i++)
     //  for (int j = 0; j < pNodeNum; j++);
     //    printf("物理机节点 %d 和 %d 之间的距离是 %d\n", i,j,dis[i][j]);
+
+    /*限定时间*/
     int totaltime = 10;
     fprintf(fpf,"PCCount,TotalTime,TaskCount\n");
     fprintf(fpg,"PCCount,TotalTime,TaskCount\n");
@@ -108,11 +116,16 @@ int main() {
         }
     }
     //PerformTest(taskNum, list, dis);
-    PrintPCState(list,pNodeList,fpg,totaltime,pNodeNum,taskNum);
+    PrintPCState(list,pNodeList,fpg,totaltime,pNodeNum,taskNum);//输出资源
 
+    //free
     freeTaskList(taskNum, list);
     freePNodeList(pNodeList, pNodeNum);
     fclose(fpf);
     fclose(fpg);
+    fclose(frf);
+    fclose(frg);
+    fclose(ftask);
+    return 0;
 //    system("pause"); //for win only
 }

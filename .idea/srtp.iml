@@ -3,11 +3,11 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/firstFit.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/state.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/generate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/firstFit.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/state.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/greedy.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/generate.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/greedy.c" isTestSource="false" />
