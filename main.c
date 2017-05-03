@@ -79,7 +79,7 @@ int main() {
     //for (int i = 0; i < pNodeNum; i++)
     //  for (int j = 0; j < pNodeNum; j++);
     //    printf("物理机节点 %d 和 %d 之间的距离是 %d\n", i,j,dis[i][j]);
-    int totaltime = 30;
+    int totaltime = 10;
     fprintf(fpf,"PCCount,TotalTime,TaskCount\n");
     fprintf(fpg,"PCCount,TotalTime,TaskCount\n");
     fprintf(fpf,"%d,%d,%d\n",pNodeNum,totaltime,taskNum);

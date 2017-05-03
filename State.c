@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "generate.h"
 void PrintPCState(struct vList *list, struct pNode** pNodeList, FILE *fp,int Time,int pNum,int tNum){
-    fprintf(fp,"TIME,PcNumber,CPU,MEMORY,DISK\n");
+//    fprintf(fp,"TIME,PcNumber,CPU,MEMORY,DISK\n");
     int * resource = (int *)calloc(Time*pNum*3, sizeof(int));
     for(int i = 0; i < tNum; i++){// task
 
@@ -26,8 +26,11 @@ void PrintPCState(struct vList *list, struct pNode** pNodeList, FILE *fp,int Tim
         }
     }
 
-    for(int i = 0 ; i <Time*pNum;i++){
-        int temp = i*3;
-        fprintf(fp,"%d,%d,%d,%d,%d\n",i/pNum,i%pNum,resource[temp+CPU],resource[temp+MEMORY],resource[temp+DISK]);
+    for(int i = 0 ; i <Time;i++){
+        printf("%d",Time);
+        int t = i * pNum*3;
+        fprintf(fp,"%d,%d,%d,%d,%d\n",resource[t+CPU],resource[t+3+CPU],resource[t+6+CPU],resource[t+9+CPU],resource[t+12+CPU]);
+        fprintf(fp,"%d,%d,%d,%d,%d\n",resource[t+MEMORY],resource[t+3+MEMORY],resource[t+6+MEMORY],resource[t+9+MEMORY],resource[t+12+MEMORY]);
+        fprintf(fp,"%d,%d,%d,%d,%d\n",resource[t+DISK],resource[t+3+DISK],resource[t+6+DISK],resource[t+9+DISK],resource[t+12+DISK]);
     }
 }

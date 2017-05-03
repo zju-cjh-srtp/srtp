@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="echarts.js"></script>
+    <script src="jquery-3.2.1.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <title>Presentation</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var a={}
+        var phy =
+    </script>
+    <div id="Resource" style="width: 1000px;height:600px;"></div>
+    <script type="text/javascript">
+        var resourceChart = echarts.init(document.getElementById('Resource'));
+        a=[
+            [9, 4, 0, 0, 0],
+            [9, 5, 0, 0, 0],
+            [9, 3, 0, 0, 0],
+            [6, 6, 3, 0, 0],
+            [4, 6, 3, 0, 0],
+            [5, 4, 2, 0, 0],
+            [5, 2, 9, 0, 0],
+            [3, 3, 9, 0, 0],
+            [4, 1, 5, 0, 0],
+            [3, 0, 4, 1, 3],
+            [5, 0, 3, 2, 5],
+            [6, 0, 3, 2, 3],
+            [3, 4, 0, 1, 8],
+            [6, 2, 0, 2, 8],
+            [9, 4, 0, 2, 7],
+            [1, 1, 3, 0, 6],
+            [1, 1, 5, 0, 4],
+            [3, 3, 5, 0, 5],
+            [1, 3, 0, 0, 3],
+            [3, 3, 0, 0, 2],
+            [1, 1, 0, 0, 4],
+            [1, 0, 3, 3, 3],
+            [3, 0, 1, 3, 4],
+            [1, 0, 3, 2, 3],
+            [0, 0, 3, 3, 1],
+            [0, 0, 1, 3, 3],
+            [0, 0, 3, 2, 3],
+            [0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 3],
+            [0, 0, 0, 0, 3]
+        ]
+
+        resourceChart.setOption(
+                {
+                    baseOption:{
+                        timeline: {
+                            data:['2017-01-03','2017-01-04','2017-01-05','2017-01-06','2017-01-07','2017-01-08','2017-01-09','2017-01-10','2017-01-11','2017-01-12']
+                        },
+                        title:{
+                            text:'GreedyFit资源分配情况'
+                        },
+                        tooltip:{},
+                        legend: {
+                            data:['分配情况','CPU','Memory','Disk'],
+                            itemGap: 1
+                        },
+                        xAxis: {
+                            data: ["物理机1","物理机2","物理机3","物理机4","物理机5"]
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: 'CPU',
+                            type: 'bar',
+                        },{
+                            name: 'Memory',
+                            type: 'bar',
+                        },{
+                            name: 'Disk',
+                            type: 'bar',
+                        }]},
+                    options: [
+                        {
+                            series:[
+                                {data:a[0]},
+                                {data:a[1]},
+                                {data:a[2]},
+                            ]
+                        },{
+                            series:[
+                                {data:a[3]},
+                                {data:a[4]},
+                                {data:a[5]},
+                            ]
+                        },{
+                            series:[
+                                {data:a[6]},
+                                {data:a[7]},
+                                {data:a[8]},
+                            ]
+                        },{
+                            series:[
+                                {data:a[9]},
+                                {data:a[10]},
+                                {data:a[11]},
+                            ]
+                        },{
+                            series:[
+                                {data:a[12]},
+                                {data:a[13]},
+                                {data:a[14]},
+                            ]
+                        },{
+                            series:[
+                                {data:a[15]},
+                                {data:a[16]},
+                                {data:a[17]},
+                            ]
+                        },{
+                            series:[
+                                {data:a[18]},
+                                {data:a[19]},
+                                {data:a[20]},
+                            ]
+                        },{
+                            series:[
+                                {data:a[21]},
+                                {data:a[22]},
+                                {data:a[23]},
+                            ]
+                        },{
+                            series:[
+                                {data:a[24]},
+                                {data:a[25]},
+                                {data:a[26]},
+                            ]
+                        },{
+                            series:[
+                                {data:a[27]},
+                                {data:a[28]},
+                                {data:a[29]},
+                            ]
+                        }
+                    ]
+
+                })
+
+    </script>
+    <!--<div id="Malloc" style="width: 1000px;height:600px;"></div>-->
+    <!--<script type="text/javascript">-->
+        <!--var mallocChart = echarts.init(document.getElementById('Malloc'));-->
+
+        <!--$.get('malloc.json').done(function(data){-->
+            <!--mallocChart.setOption({-->
+                <!--title:{-->
+                    <!--text:'任务分配情况'-->
+                <!--},-->
+                <!--tooltip:{},-->
+                <!--legend: {-->
+                    <!--data:['分配情况']-->
+                <!--},-->
+                <!--xAxis: {-->
+                    <!--data: ["1","2","3","4","5","6","7","8","9","10"]-->
+                <!--},-->
+                <!--yAxis: {-->
+                    <!--data:["物理机1","物理机2","物理机3","物理机4","物理机5"]-->
+                <!--},-->
+                <!--dataZoom:[{-->
+                    <!--type: 'slider',-->
+                    <!--start: 0,-->
+                    <!--end: 100-->
+                <!--}],-->
+                <!--series: [-->
+                    <!--{-->
+                        <!--name:'1',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","5","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--},-->
+                    <!--{-->
+                        <!--name:'2',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--},-->
+                    <!--{-->
+                        <!--name:'3',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--},-->
+                    <!--{-->
+                        <!--name:'4',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--},-->
+                    <!--{-->
+                        <!--name:'5',-->
+                        <!--type: 'scatter',-->
+                        <!--symbolSize:function(val){-->
+                            <!--return (val[2]+val[3]+val[4])/3-->
+                        <!--},-->
+                        <!--data:[["1","物理机1","1","2","3"],["3","物理机2","2","3","4"]]-->
+                    <!--}-->
+
+                <!--]-->
+            <!--});-->
+        <!--});-->
+
+    <!--</script>-->
+</body>
+</html>
