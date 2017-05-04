@@ -5,41 +5,44 @@
 #define SRTP_GENERATE_H
 
 
-/*PN资源参数*/
-#define PN_RES_MAX 50
-#define PN_RES_MIN 10
-
-/*PN数量参数*/
-#define PN_MAX 5
-#define PN_MIN 5
+/*总计用时*/
+#define TOTAL_TIME 99999
 
 /*PN距离参数*/
 #define DISTANCE_MAX 20
 #define DISTANCE_MIN 1
 
+/*PN资源参数*/
+#define PN_RES_MAX 70
+#define PN_RES_MIN 50
+
+/*PN数量参数*/
+#define PN_MAX 1400
+#define PN_MIN 1400
+
 /*SFC数量参数*/
-#define SFC_MAX 40
-#define SFC_MIN 30
+#define SFC_MAX 1500
+#define SFC_MIN 1500
 
 /*SFC中SF数量参数*/
-#define SF_MAX 3
-#define SF_MIN 1
+#define SF_MAX 20
+#define SF_MIN 5
 
 /*SFC到达时间参数*/
-#define ARRIVE_MAX 4
+#define ARRIVE_MAX 700
 #define ARRIVE_MIN 0
 
 /*SFC截止时间参数*/
-#define DEADLINE_MAX 8
+#define DEADLINE_MAX 500
 #define DEADLINE_MIN 0
 
 /*SF运行时间参数*/
-#define RUN_MAX 2
-#define RUN_MIN 1
+#define RUN_MAX 10
+#define RUN_MIN 4
 
 /*SF资源参数*/
-#define SF_RES_MAX 3
-#define SF_RES_MIN 1
+#define SF_RES_MAX 7
+#define SF_RES_MIN 2
 
 /*资源种类*/
 #define CPU 0

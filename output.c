@@ -34,3 +34,32 @@ void PrintPCState(struct vList *list, struct pNode** pNodeList, FILE *fp,int Tim
         fprintf(fp,"%d,%d,%d,%d,%d\n",resource[t+DISK],resource[t+3+DISK],resource[t+6+DISK],resource[t+9+DISK],resource[t+12+DISK]);
     }
 }
+
+
+int* AnalystResult(int* result,struct vList* list,struct pNode** pNodeList,int pNodeNum,int taskNum){
+    int successNum = 0,pcNum = 0,usedTime = 0;
+    int* pUsed = calloc(pNodeNum,sizeof(int));
+    for(int i = 0; i <taskNum;i++){
+        if(list[i].taskState != REJECTED){ //every success task
+            successNum ++;//  succss num plus 1
+            struct vNode* task = list[i].head;
+            for(int j = 0; j < list[i].length ; j++){// each small task
+                if(pUsed[task->hostPNodeID] == 0){ //the pcNum
+                    pUsed[task->hostPNodeID] = 1;
+                    pcNum++;
+                }
+                if(j == list[i].length - 1){ //final small task, to check the finished time
+                    int t = task->startTime+task->duration;
+                    if(usedTime < t) usedTime = t;
+                }
+                task= task->next;
+            }
+        }
+    }
+    result[0] = successNum;
+    result[1] = pcNum;
+    result[2] = usedTime;
+
+    return result;
+
+}
